@@ -289,22 +289,7 @@ class TVCardServices extends LitElement {
             ></ha-icon-button>
           </div>
 
-          <div class="row">
-            <ha-icon-button
-              .action="${"down"}"
-              @click="${this.handleActionClick}"
-              icon="mdi:chevron-down"
-              .path=${mdiChevronDown}
-              title="Down"
-            ></ha-icon-button>
-            <ha-icon-button
-              .action="${"remotef"}"
-              @click="${this.handleActionClick}"
-              icon="mdi:remote-tv"
-              .path=${mdiRemoteTv}
-              title="Remotef"
-            ></ha-icon-button>
-          </div>
+
 
           ${
             this._config.reverse || this._config.play || this._config.forward
