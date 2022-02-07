@@ -39,7 +39,7 @@
 | reverse | `service` | **Optional**| service to call when reverse button pressed
 | play | `service` | **Optional**| service to call when play button pressed
 | forward | `service` | **Optional**| service to call when forward button pressed
-| source | `service` | **Optional**| service to call when source button pressed
+| menu | `service` | **Optional**| service to call when menu button pressed
 | channelup | `service` | **Optional**| service to call when channelup button pressed
 | channeldown | `service` | **Optional**| service to call when channeldown button pressed
 | volume_up | `service` | **Optional**| service to call when volume up button pressed
