@@ -1,5 +1,6 @@
 # Shield TV Remote Card
 
+Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 
 
 ## Demo:
@@ -19,8 +20,8 @@
 | power_on | `service` | **Optional, Exclusive**| service to call when power_on button pressed. Only enabled if no `power` defined.
 | power_off | `service` | **Optional, Exclusive**| service to call when power_off button pressed. Only enabled if no `power` defined.
 | back | `service` | **Optional**| service to call when back button pressed
-| info        | `service` | **Optional**| service to call when info button pressed
 | home | `service` | **Optional**| service to call when home button pressed
+| menu | `service` | **Optional**| service to call when menu button pressed
 | up | `service` | **Optional**| service to call when up button pressed
 | left | `service` | **Optional**| service to call when left button pressed
 | select | `service` | **Optional**| service to call when select button pressed
@@ -29,15 +30,15 @@
 | reverse | `service` | **Optional**| service to call when reverse button pressed
 | play | `service` | **Optional**| service to call when play button pressed
 | forward | `service` | **Optional**| service to call when forward button pressed
-| menu | `service` | **Optional**| service to call when menu button pressed
-| channelup | `service` | **Optional**| service to call when channelup button pressed
-| channeldown | `service` | **Optional**| service to call when channeldown button pressed
+| finder | `service` | **Optional**| service to call when remote finder button pressed
 | volume_up | `service` | **Optional**| service to call when volume up button pressed
 | volume_down | `service` | **Optional**| service to call when volume down button pressed
 | volume_mute | `service` | **Optional**| service to call when volume mute button pressed
 | netflix | `service` | **Optional**| service to call when netflix button pressed
 | prime_video | `service` | **Optional**| service to call when prime video button pressed
 | youtube | `service` | **Optional**| service to call when youtube button pressed
+| hulu | `service` | **Optional**| service to call when hulu button pressed
+| plex | `service` | **Optional**| service to call when plex button pressed
 
 ## `service` Options
 | Name | Type | Requirement | Description
@@ -48,146 +49,113 @@
 
 ## Installation
 
-### Step 1:
 Install using HACS or [see this guide](https://github.com/thomasloven/hass-config/wiki/Lovelace-Plugins).
 
-### Step 2:
-
-Add a custom element in your `ui-lovelace.yaml`
-
-```yaml
-      - type: custom:tv-card
-        entity: sun.sun
-        name: Bedroom TV
-        tv: true
-        power:
-          service: switch.turn_on
-          service_data:
-            entity_id: switch.bedroom_tv_power
-```
+## Nvidia Shield Commands
+Here you cna find some adb commands: [NVIDIA Shield Intents](https://gist.github.com/mcfrojd/9e6875e1db5c089b1e3ddeb7dba0f304)
 
 ### Example 1:
 
-You can use the card in combination with the [browser mod integration](https://github.com/thomasloven/hass-browser_mod).
-That means that you can create an input_boolean which opens a popup when you click its icon:
-
 ```yaml
-type: entities
-entities:
-  - entity: input_boolean.tv
-    name: TV
-    tap_action:
-      action: fire-dom-event
-      browser_mod:
-        command: popup
-        style:
-          border-radius: 20px
-          '--ha-card-border-radius': 0px
-        title: TV Fernbedienung
-        card:
-          type: 'custom:tv-card'
-          entity: sun.sun
-          back:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVEzcROBI4ERQRFBEUERQRFBE5ETgSOBEUERQRFBEUEhMRFBEUERQROBI4ERQROBITEjgROBI4EhMSExI4ERQROBIADQUAAA==
-          backs:
-            service: androidtv.adb_command
-            service_data:
-              command: BACK
-              entity_id: media_player.firetv
-          channeldown:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVEjgSNxI4EhMRFBEUERQRFBE5ETgSOBEUERQRFBEUERQRFBEUERQRFBE4EhMSExITEjgROBI4ETgSExI4ETgSOBIADQUAAA==
-          channelup:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJKWETgSOBE5ERQRFBETEhMSExI4ETkROBITEhMSExEUERQRFBE5ERQRFBE4EhMSExITETkSExE4EjgRFBE4EjgROBIADQUAAA==
-          down:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVEzcSOBE4EhMSExITEhMSExI4ETgSOBITERQRFBEUERQROBITExISExITEjgROBITExISOBE4EjgROREUEhMROBEADQUAAA==
-          forward:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVEjgSOBI3EhMSExITEhMSExI4ETgSOBEUERQRFBEUERQRFBEUERQSNxMSExISOBITETgTNxI4ERQROBI3EhQSNxIADQUAAA==
-          home:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJSUEjgROBI4ERQRFBEUERQRFBE4EjgSNxITExISExITExISOBITETgSOBEUETgSExMSEhMSOBEUERQROBITEjgROBIADQUAAA==
-          info:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVETgSOBE4EhMSExITEhMSExI4ETgTNxEUERQRFBEUERQROBI4EjgROBITEhMSOBEUERQRFBITERQROBI4ERQSNxEADQUAAA==
-          left:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVEzcSOBE4EhMSExITEhMSExE5ETgSOBITERQSExEUERQROBITEjgRFBEUETgSOBEUERQRORETEjgSOBEUERQROBIADQUAAA==
-          play:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVEjgSOBE4EhMSExITEhMSExI4ETgSOBITERQRFBEUERQROBI4EjcSExITEhMTNxEUERQRFBEUETgSOBE4EhMSOBIADQUAAA==
-          power:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOWEjcSOBI3EhMTEhITEhMSExI4ETgSOBEUERQRFBEUERQRFBI3EhMSFBETEhMSExMSEjgSExE4EzcRORI3ETkROBIADQUAAA==
-          remote: input_select.tv_input
-          reverse:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVETYUOBE5ERQRFBEUERQRFBE4ETkROBITEhMSExITEhMSOBEUETgSExITEhMSOBEUERQROBITEjgROBI4ERQROBMADQUAAA==
-          right:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJOVETkROBI4EhMRFBEUERQRFBE4EjgROBITEhMSExITEhMSExI4ERQRFBEUETgSOBEUETgSExI4ETgSOBEUERQROBIADQUAAA==
-          select:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJSVETgSOBE4EhMSExITEhMSExI4ETgSOBEUERQSExEUERQRFBEUERQROBITEjgROBMSEjgSNxM3EhMSOBEUERQROBEADQUAAA==
-          source:
-            service: broadlink.send
-            service_data:
-              host: 192.168.1.53
-              packet: >-
-                JgBGAJKXEDkRORA4EhQSExETEBYRFRA5EDgTOBAVDxcPFRAVEBURNxMTERQRFBITERQRFBEUERQQOhI2EjkQORE5EDkSNxEADQUAAA==
+type: custom:shieldtv-card
+entity: media_player.bedroom_nvidia_shield
+name: false
+tv: false
+menu:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -d -n
+      com.android.tv.settings/.MainSettings
+home:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: HOME
+back:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: BACK
+play:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: input keyevent 85
+reverse:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: input keyevent 38
+forward:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: input keyevent 40
+up:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: UP
+left:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: LEFT
+select:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: ENTER
+right:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: RIGHT
+down:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: DOWN
+finder:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -d -n
+      com.nvidia.remotelocator/.ShieldRemoteLocatorActivity
+plex:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -n
+      com.plexapp.android/com.plexapp.plex.activities.SplashActivity
+youtube:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -n
+      com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity
+prime_video:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -n
+      com.amazon.amazonvideo.livingroom/com.amazon.ignition.IgnitionActivity
+hulu:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -n
+      com.hulu.livingroomplus/.WKFactivity
+netflix:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.bedroom_nvidia_shield
+    command: am start -a android.intent.action.VIEW -n com.netflix.ninja/.MainActivity
 ```
-
-
-[commits-shield]: https://img.shields.io/github/commit-activity/y/marrobHD/tv-card.svg?style=for-the-badge
-[commits]: https://github.com/marrobHD/tv-card/commits/master
-[discord]: https://discord.gg/ND4emRS
-[discord-shield]: https://img.shields.io/discord/579704220970909717.svg?style=for-the-badge
-[forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
-[forum]: https://community.home-assistant.io/t/lovelace-tv-remote-card/91476
-[license-shield]: https://img.shields.io/github/license/marrobHD/tv-card.svg?style=for-the-badge
-[maintenance-shield]: https://img.shields.io/badge/maintainer-marrobHD-blue.svg?style=for-the-badge
-[releases-shield]: https://img.shields.io/github/release/marrobHD/tv-card.svg?style=for-the-badge
-[releases]: https://github.com/marrobHD/tv-card/releases
-[github]: https://img.shields.io/github/followers/marrobHD.svg?style=social
