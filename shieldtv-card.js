@@ -214,7 +214,7 @@ class TVCardServices extends LitElement {
           ${
             this._config.netflix ||
             this._config.prime_video ||
-            this._config.youtube
+            this._config.rfinder
               ? html`
                   <div class="row">
                     ${this._config.netflix ?
@@ -239,14 +239,14 @@ class TVCardServices extends LitElement {
                         ></ha-icon-button>
                       `
                     : emptyButton}
-                    ${this._config.youtube ?
+                    ${this._config.rfinder ?
                       html`
                         <ha-icon-button
-                          .action="${"youtube"}"
+                          .action="${"rfinder"}"
                           @click="${this.handleActionClick}"
-                          icon="mdi:youtube"
-                          .path=${mdiYoutube}
-                          title="Youtube"
+                          icon="mdi:remote-tv"
+                          .path=${mdiRemoteTV}
+                          title="Remote Finder"
                         ></ha-icon-button>
                       `
                     : emptyButton}
@@ -289,7 +289,15 @@ class TVCardServices extends LitElement {
             ></ha-icon-button>
           </div>
 
-
+          <div class="row">
+            <ha-icon-button
+              .action="${"down"}"
+              @click="${this.handleActionClick}"
+              icon="mdi:chevron-down"
+              .path=${mdiChevronDown}
+              title="Down"
+            ></ha-icon-button>
+          </div>
 
           ${
             this._config.reverse || this._config.play || this._config.forward
