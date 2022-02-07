@@ -26,7 +26,7 @@ mdiVolumePlus,
 mdiNetflix,
 mdiYoutube,
 mdiMenu,
-mdiRemoteTv,
+mdiRemote,
 } from "https://unpkg.com/@mdi/js@6.4.95/mdi.js?module"
 
 // Taken from mdi v5.9.55
@@ -214,7 +214,7 @@ class TVCardServices extends LitElement {
           ${
             this._config.netflix ||
             this._config.prime_video ||
-            this._config.youtube
+            this._config.finder
               ? html`
                   <div class="row">
                     ${this._config.netflix ?
@@ -239,14 +239,14 @@ class TVCardServices extends LitElement {
                         ></ha-icon-button>
                       `
                     : emptyButton}
-                    ${this._config.youtube ?
+                    ${this._config.finder ?
                       html`
                         <ha-icon-button
-                          .action="${"youtube"}"
+                          .action="${"finder"}"
                           @click="${this.handleActionClick}"
-                          icon="mdi:youtube"
-                          .path=${mdiYoutube}
-                          title="YouTube"
+                          icon="mdi:remote"
+                          .path=${mdiRemote}
+                          title="Finder"
                         ></ha-icon-button>
                       `
                     : emptyButton}
@@ -288,14 +288,6 @@ class TVCardServices extends LitElement {
               title="Right"
             ></ha-icon-button>
           </div>
-          <div class="row">
-            <ha-icon-button
-              .action="${"rfinder"}"
-              @click="${this.handleActionClick}"
-              icon="mdi:remote-tv"
-              .path=${mdiRemoteTV}
-              title="RemoteFinder"
-            ></ha-icon-button>
            <div class="row">
             <ha-icon-button
               .action="${"down"}"
@@ -454,7 +446,7 @@ class TVCardServices extends LitElement {
       "prime_video",
       "youtube",
       "menu",
-      "rfinder",
+      "finder",
     ];
 
     if (
