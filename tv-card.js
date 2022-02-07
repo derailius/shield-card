@@ -125,7 +125,7 @@ class TVCardServices extends LitElement {
           }
 
           ${
-            this._config.back || this._config.source || this._config.home
+            this._config.back || this._config.home || this._config.menu
               ? html`
                   <div class="row">
                     ${this._config.back
@@ -444,7 +444,8 @@ class TVCardServices extends LitElement {
       "forward",
       "netflix",
       "prime_video",
-      "youtube"
+      "youtube",
+      "menu",
     ];
 
     if (
