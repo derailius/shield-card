@@ -3,8 +3,8 @@
 Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 
 
-## Demo:
-
+## Demo: yaml found below
+![demo](https://i.imgur.com/dcR9U2S.png)
 
 ## Options
 
@@ -55,107 +55,112 @@ Install using HACS or [see this guide](https://github.com/thomasloven/hass-confi
 Here you cna find some adb commands: [NVIDIA Shield Intents](https://gist.github.com/mcfrojd/9e6875e1db5c089b1e3ddeb7dba0f304)
 
 ### Example 1:
-
+Fully built for Nvidia Shield. I personally remove the power button.
+Change each entity/entity_id to your own media_player.shield
 ```yaml
 type: custom:shieldtv-card
-entity: media_player.bedroom_nvidia_shield
+entity: media_player.living_room_nvidia_shield
 name: false
-tv: false
-menu:
-  service: androidtv.adb_command
-  service_data:
-    entity_id: media_player.bedroom_nvidia_shield
-    command: >-
-      am start -a android.intent.action.VIEW -d -n
-      com.android.tv.settings/.MainSettings
-home:
-  service: androidtv.adb_command
-  service_data:
-    entity_id: media_player.bedroom_nvidia_shield
-    command: HOME
+tv: true
+power: 
+  service: media_player.turn_on
+  service_data:   
+    entity_id: media_player.living_room_nvidia_shield
 back:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: BACK
-play:
+home:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
-    command: input keyevent 85
-reverse:
+    entity_id: media_player.living_room_nvidia_shield
+    command: HOME
+menu:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
-    command: input keyevent 38
-forward:
-  service: androidtv.adb_command
-  service_data:
-    entity_id: media_player.bedroom_nvidia_shield
-    command: input keyevent 40
+    entity_id: media_player.living_room_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -d -n
+      com.android.tv.settings/.MainSettings
 up:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: UP
 left:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: LEFT
 select:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: ENTER
 right:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: RIGHT
 down:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: DOWN
+reverse:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.living_room_nvidia_shield
+    command: input keyevent 38
+play:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.living_room_nvidia_shield
+    command: input keyevent 85
+forward:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.living_room_nvidia_shield
+    command: input keyevent 40
 finder:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: >-
       am start -a android.intent.action.VIEW -d -n
       com.nvidia.remotelocator/.ShieldRemoteLocatorActivity
+hulu:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.living_room_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -n
+      com.hulu.livingroomplus/.WKFactivity
+prime_video:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.living_room_nvidia_shield
+    command: >-
+      am start -a android.intent.action.VIEW -n
+      com.amazon.amazonvideo.livingroom/com.amazon.ignition.IgnitionActivity
+netflix:
+  service: androidtv.adb_command
+  service_data:
+    entity_id: media_player.living_room_nvidia_shield
+    command: am start -a android.intent.action.VIEW -n com.netflix.ninja/.MainActivity
 plex:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: >-
       am start -a android.intent.action.VIEW -n
       com.plexapp.android/com.plexapp.plex.activities.SplashActivity
 youtube:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.bedroom_nvidia_shield
+    entity_id: media_player.living_room_nvidia_shield
     command: >-
       am start -a android.intent.action.VIEW -n
       com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity
-prime_video:
-  service: androidtv.adb_command
-  service_data:
-    entity_id: media_player.bedroom_nvidia_shield
-    command: >-
-      am start -a android.intent.action.VIEW -n
-      com.amazon.amazonvideo.livingroom/com.amazon.ignition.IgnitionActivity
-hulu:
-  service: androidtv.adb_command
-  service_data:
-    entity_id: media_player.bedroom_nvidia_shield
-    command: >-
-      am start -a android.intent.action.VIEW -n
-      com.hulu.livingroomplus/.WKFactivity
-netflix:
-  service: androidtv.adb_command
-  service_data:
-    entity_id: media_player.bedroom_nvidia_shield
-    command: am start -a android.intent.action.VIEW -n com.netflix.ninja/.MainActivity
 ```
