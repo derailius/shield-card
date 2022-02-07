@@ -126,7 +126,7 @@ class TVCardServices extends LitElement {
           }
 
           ${
-            this._config.back || this._config.home || this._config.menu
+            this._config.back || this._config.home || this._config.menu || this._config.remote
               ? html`
                   <div class="row">
                     ${this._config.back
