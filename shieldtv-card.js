@@ -27,6 +27,8 @@ mdiNetflix,
 mdiYoutube,
 mdiMenu,
 mdiRemote,
+mdiHulu,
+mdiPlex,
 } from "https://unpkg.com/@mdi/js@6.4.95/mdi.js?module"
 
 // Taken from mdi v5.9.55
@@ -124,7 +126,94 @@ class TVCardServices extends LitElement {
                 `
               : ""
           }
-
+          
+          ${
+            this._config.finder ||
+            this._config.hulu ||
+            this._config.prime_video
+              ? html`
+                  <div class="row">
+                    ${this._config.finder ?
+                      html`
+                        <ha-icon-button
+                          .action="${"finder"}"
+                          @click="${this.handleActionClick}"
+                          icon="mdi:remote"
+                          .path=${mdiRemote}
+                          title="Remote Finder"
+                        ></ha-icon-button>
+                      `
+                    : emptyButton}
+                    ${this._config.hulu ?
+                      html`
+                        <ha-icon-button
+                          .action="${"hulu"}"
+                          @click="${this.handleActionClick}"
+                          icon="mdi:hulu"
+                          .path=${mdiHulu}
+                          title="Hulu"
+                        ></ha-icon-button>
+                      `
+                    : emptyButton}
+                    ${this._config.prime_video ?
+                      html`
+                        <ha-icon-button
+                          .action="${"prime_video"}"
+                          @click="${this.handleActionClick}"
+                          icon="mdi:amazon"
+                          .path=${AMAZON_ICON_PATH}
+                          title="Prime Video"
+                        ></ha-icon-button>
+                      `
+                    : emptyButton}
+                  </div>
+                `
+              : ""
+          }
+          
+          ${
+            this._config.netflix ||
+            this._config.plex ||
+            this._config.youtube
+              ? html`
+                  <div class="row">
+                    ${this._config.netflix
+                      ? html`
+                          <ha-icon-button
+                            .action="${"netflix"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:netflix"
+                            .path=${mdiNetflix}
+                            title="Netflix"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.plex
+                      ? html`
+                          <ha-icon-button
+                            .action="${"plex"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:plex"
+                            .path=${mdiPlex}
+                            title="Plex"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.youtube
+                      ? html`
+                          <ha-icon-button
+                            .action="${"youtube"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:youtube"
+                            .path=${mdiYoutube}
+                            title="YouTube"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                  </div>
+                `
+              : ""
+          }          
           ${
             this._config.back || this._config.home || this._config.menu
               ? html`
@@ -162,94 +251,6 @@ class TVCardServices extends LitElement {
                           ></ha-icon-button>
                         `
                       : emptyButton}
-                  </div>
-                `
-              : ""
-          }
-
-          ${
-            this._config.channelup ||
-            this._config.info ||
-            this._config.channeldown
-              ? html`
-                  <div class="row">
-                    ${this._config.channelup
-                      ? html`
-                          <ha-icon-button
-                            .action="${"channelup"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:arrow-up"
-                            .path=${mdiArrowUp}
-                            title="Channelup"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.info
-                      ? html`
-                          <ha-icon-button
-                            .action="${"info"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:television-guide"
-                            .path=${mdiTelevisionGuide}
-                            title="Guide"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.channeldown
-                      ? html`
-                          <ha-icon-button
-                            .action="${"channeldown"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:arrow-down"
-                            .path=${mdiArrowDown}
-                            title="Channeldown"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                  </div>
-                `
-              : ""
-          }
-
-          ${
-            this._config.netflix ||
-            this._config.prime_video ||
-            this._config.finder
-              ? html`
-                  <div class="row">
-                    ${this._config.netflix ?
-                      html`
-                        <ha-icon-button
-                          .action="${"netflix"}"
-                          @click="${this.handleActionClick}"
-                          icon="mdi:netflix"
-                          .path=${mdiNetflix}
-                          title="Netflix"
-                        ></ha-icon-button>
-                      `
-                    : emptyButton}
-                    ${this._config.prime_video ?
-                      html`
-                        <ha-icon-button
-                          .action="${"prime_video"}"
-                          @click="${this.handleActionClick}"
-                          icon="mdi:amazon"
-                          .path=${AMAZON_ICON_PATH}
-                          title="Prime Video"
-                        ></ha-icon-button>
-                      `
-                    : emptyButton}
-                    ${this._config.finder ?
-                      html`
-                        <ha-icon-button
-                          .action="${"finder"}"
-                          @click="${this.handleActionClick}"
-                          icon="mdi:remote"
-                          .path=${mdiRemote}
-                          title="Finder"
-                        ></ha-icon-button>
-                      `
-                    : emptyButton}
                   </div>
                 `
               : ""
@@ -447,6 +448,8 @@ class TVCardServices extends LitElement {
       "youtube",
       "menu",
       "finder",
+      "plex",
+      "hulu",
     ];
 
     if (
