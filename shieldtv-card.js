@@ -26,6 +26,7 @@ mdiVolumePlus,
 mdiNetflix,
 mdiYoutube,
 mdiMenu,
+mdiRemotetv,
 } from "https://unpkg.com/@mdi/js@6.4.95/mdi.js?module"
 
 // Taken from mdi v5.9.55
@@ -158,6 +159,17 @@ class TVCardServices extends LitElement {
                             icon="mdi:menu"
                             .path=${mdiMenu}
                             title="Menu"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.remote
+                      ? html`
+                          <ha-icon-button
+                            .action="${"remote"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:remote-tv"
+                            .path=${mdiRemotetv}
+                            title="Remote"
                           ></ha-icon-button>
                         `
                       : emptyButton}
