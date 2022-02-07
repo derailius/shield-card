@@ -25,6 +25,7 @@ mdiVolumeMinus,
 mdiVolumePlus,
 mdiNetflix,
 mdiYoutube,
+mdiMenu,
 } from "https://unpkg.com/@mdi/js@6.4.95/mdi.js?module"
 
 // Taken from mdi v5.9.55
@@ -138,25 +139,25 @@ class TVCardServices extends LitElement {
                           ></ha-icon-button>
                         `
                       : emptyButton}
-                    ${this._config.source
-                      ? html`
-                          <ha-icon-button
-                            .action="${"source"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:video-input-hdmi"
-                            .path=${mdiVideoInputHdmi}
-                            title="Source"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
                     ${this._config.home
                       ? html`
                           <ha-icon-button
                             .action="${"home"}"
                             @click="${this.handleActionClick}"
-                            icon="mdi:home"
+                            icon="mdi:video-input-hdmi"
                             .path=${mdiHome}
                             title="Home"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.menu
+                      ? html`
+                          <ha-icon-button
+                            .action="${"menu"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:menu"
+                            .path=${mdiMenu}
+                            title="Menu"
                           ></ha-icon-button>
                         `
                       : emptyButton}
