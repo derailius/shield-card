@@ -126,7 +126,7 @@ class TVCardServices extends LitElement {
           }
 
           ${
-            this._config.back || this._config.home || this._config.menu || this._config.remotef
+            this._config.back || this._config.home || this._config.menu
               ? html`
                   <div class="row">
                     ${this._config.back
@@ -159,17 +159,6 @@ class TVCardServices extends LitElement {
                             icon="mdi:menu"
                             .path=${mdiMenu}
                             title="Menu"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.remotef
-                      ? html`
-                          <ha-icon-button
-                            .action="${"remotef"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:remote-tv"
-                            .path=${mdiRemotetv}
-                            title="Remotef"
                           ></ha-icon-button>
                         `
                       : emptyButton}
@@ -307,6 +296,13 @@ class TVCardServices extends LitElement {
               icon="mdi:chevron-down"
               .path=${mdiChevronDown}
               title="Down"
+            ></ha-icon-button>
+            <ha-icon-button
+              .action="${"remotef"}"
+              @click="${this.handleActionClick}"
+              icon="mdi:remote-tv"
+              .path=${mdiRemotetv}
+              title="Remotef"
             ></ha-icon-button>
           </div>
 
