@@ -1,4 +1,4 @@
-# TV Remote Card
+# Shield TV Remote Card
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE.md)
