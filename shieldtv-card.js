@@ -447,7 +447,7 @@ class TVCardServices extends LitElement {
       "prime_video",
       "youtube",
       "menu",
-      "remote",
+      "rfinder",
     ];
 
     if (
