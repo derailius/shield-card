@@ -4,7 +4,8 @@ Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 
 
 ## Demo: 
-*yaml found below
+*yaml found below*
+
 ![demo](https://i.imgur.com/dcR9U2S.png)
 
 ## Options
