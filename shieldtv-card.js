@@ -127,7 +127,47 @@ class TVCardServices extends LitElement {
               : ""
           }
           
-
+          ${
+            this._config.back || this._config.home || this._config.menu
+              ? html`
+                  <div class="row">
+                    ${this._config.back
+                      ? html`
+                          <ha-icon-button
+                            .action="${"back"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:arrow-left"
+                            .path=${mdiArrowLeft}
+                            title="Back"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.home
+                      ? html`
+                          <ha-icon-button
+                            .action="${"home"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:video-input-hdmi"
+                            .path=${mdiHome}
+                            title="Home"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.menu
+                      ? html`
+                          <ha-icon-button
+                            .action="${"menu"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:menu"
+                            .path=${mdiMenu}
+                            title="Menu"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                  </div>
+                `
+              : ""
+          }
 
           <div class="row">
             <ha-icon-button
@@ -300,47 +340,6 @@ class TVCardServices extends LitElement {
                 `
               : ""
           }          
-          ${
-            this._config.back || this._config.home || this._config.menu
-              ? html`
-                  <div class="row">
-                    ${this._config.back
-                      ? html`
-                          <ha-icon-button
-                            .action="${"back"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:arrow-left"
-                            .path=${mdiArrowLeft}
-                            title="Back"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.home
-                      ? html`
-                          <ha-icon-button
-                            .action="${"home"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:video-input-hdmi"
-                            .path=${mdiHome}
-                            title="Home"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.menu
-                      ? html`
-                          <ha-icon-button
-                            .action="${"menu"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:menu"
-                            .path=${mdiMenu}
-                            title="Menu"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                  </div>
-                `
-              : ""
-          }
           ${
             this._config.tv && (
             this._config.volume_up ||
