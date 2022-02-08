@@ -44,8 +44,8 @@ class TVCardServices extends LitElement {
   }
 
   //  static async getConfigElement() {
-  //    await import("./shieldtv-card-editor.js");
-  //    return document.createElement("shieldtv-card-editor");
+  //    await import("./shield-card-editor.js");
+  //    return document.createElement("shield-card-editor");
   //  }
 
   static getStubConfig() {
@@ -514,4 +514,4 @@ class TVCardServices extends LitElement {
   }
 }
 
-customElements.define("shieldtv-card", TVCardServices);
+customElements.define("shield-card", TVCardServices);
