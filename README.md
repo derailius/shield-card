@@ -1,4 +1,4 @@
-# Shield TV Remote Card
+# Nvidia Shield Remote Card
 
 Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 
