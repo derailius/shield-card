@@ -85,7 +85,6 @@ class TVCardServices extends LitElement {
       ${this.renderStyle()}
       <ha-card .header="${this._config.name}">
           <div class="row">
-
           </div>
           ${
             this._config.tv && this._config.power
@@ -102,7 +101,6 @@ class TVCardServices extends LitElement {
                 `
               : ""
           }
-
           ${
             this._config.tv && !(this._config.power) && (this._config.power_on || this._config.power_off)
               ? html`
@@ -126,133 +124,7 @@ class TVCardServices extends LitElement {
                 `
               : ""
           }
-                 
-          ${
-            this._config.back || this._config.home || this._config.menu
-              ? html`
-                  <div class="row">
-                    ${this._config.back
-                      ? html`
-                          <ha-icon-button
-                            .action="${"back"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:arrow-left"
-                            .path=${mdiArrowLeft}
-                            title="Back"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.home
-                      ? html`
-                          <ha-icon-button
-                            .action="${"home"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:video-input-hdmi"
-                            .path=${mdiHome}
-                            title="Home"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.menu
-                      ? html`
-                          <ha-icon-button
-                            .action="${"menu"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:menu"
-                            .path=${mdiMenu}
-                            title="Menu"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                  </div>
-                `
-              : ""
-          }
-
-          <div class="row">
-            <ha-icon-button
-              .action="${"up"}"
-              @click="${this.handleActionClick}"
-              icon="mdi:chevron-up"
-              .path=${mdiChevronUp}
-              title="Up"
-            ></ha-icon-button>
-          </div>
-
-          <div class="row">
-            <ha-icon-button
-              .action="${"left"}"
-              @click="${this.handleActionClick}"
-              icon="mdi:chevron-left"
-              .path=${mdiChevronLeft}
-              title="Left"
-            ></ha-icon-button>
-            <ha-icon-button
-              .action="${"select"}"
-              @click="${this.handleActionClick}"
-              icon="mdi:checkbox-blank-circle"
-              .path=${mdiCheckboxBlankCircle}
-              title="Select"
-            ></ha-icon-button>
-            <ha-icon-button
-              .action="${"right"}"
-              @click="${this.handleActionClick}"
-              icon="mdi:chevron-right"
-              .path=${mdiChevronRight}
-              title="Right"
-            ></ha-icon-button>
-          </div>
-           <div class="row">
-            <ha-icon-button
-              .action="${"down"}"
-              @click="${this.handleActionClick}"
-              icon="mdi:chevron-down"
-              .path=${mdiChevronDown}
-              title="Down"
-            ></ha-icon-button>
-          </div>
-
-          ${
-            this._config.reverse || this._config.play || this._config.forward
-              ? html`
-                  <div class="row">
-                    ${this._config.reverse
-                      ? html`
-                          <ha-icon-button
-                            .action="${"reverse"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:rewind"
-                            .path=${mdiRewind}
-                            title="Rewind"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.play
-                      ? html`
-                          <ha-icon-button
-                            .action="${"play"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:play-pause"
-                            .path=${mdiPlayPause}
-                            title="Play/Pause"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                    ${this._config.forward
-                      ? html`
-                          <ha-icon-button
-                            .action="${"forward"}"
-                            @click="${this.handleActionClick}"
-                            icon="mdi:fast-forward"
-                            .path=${mdiFastForward}
-                            title="Fast-Forward"
-                          ></ha-icon-button>
-                        `
-                      : emptyButton}
-                  </div>
-                `
-              : ""
-          }
+          
           ${
             this._config.youtube ||
             this._config.hulu ||
@@ -330,8 +202,8 @@ class TVCardServices extends LitElement {
                           <ha-icon-button
                             .action="${"finder"}"
                             @click="${this.handleActionClick}"
-                            icon="mdi:finder"
-                            .path=${mdiFinder}
+                            icon="mdi:remote"
+                            .path=${mdiRemote}
                             title="Remote Finder"
                           ></ha-icon-button>
                         `
@@ -339,8 +211,130 @@ class TVCardServices extends LitElement {
                   </div>
                 `
               : ""
+          }          
+          ${
+            this._config.back || this._config.home || this._config.menu
+              ? html`
+                  <div class="row">
+                    ${this._config.back
+                      ? html`
+                          <ha-icon-button
+                            .action="${"back"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:arrow-left"
+                            .path=${mdiArrowLeft}
+                            title="Back"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.home
+                      ? html`
+                          <ha-icon-button
+                            .action="${"home"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:video-input-hdmi"
+                            .path=${mdiHome}
+                            title="Home"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.menu
+                      ? html`
+                          <ha-icon-button
+                            .action="${"menu"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:menu"
+                            .path=${mdiMenu}
+                            title="Menu"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                  </div>
+                `
+              : ""
           }
-          
+          <div class="row">
+            <ha-icon-button
+              .action="${"up"}"
+              @click="${this.handleActionClick}"
+              icon="mdi:chevron-up"
+              .path=${mdiChevronUp}
+              title="Up"
+            ></ha-icon-button>
+          </div>
+          <div class="row">
+            <ha-icon-button
+              .action="${"left"}"
+              @click="${this.handleActionClick}"
+              icon="mdi:chevron-left"
+              .path=${mdiChevronLeft}
+              title="Left"
+            ></ha-icon-button>
+            <ha-icon-button
+              .action="${"select"}"
+              @click="${this.handleActionClick}"
+              icon="mdi:checkbox-blank-circle"
+              .path=${mdiCheckboxBlankCircle}
+              title="Select"
+            ></ha-icon-button>
+            <ha-icon-button
+              .action="${"right"}"
+              @click="${this.handleActionClick}"
+              icon="mdi:chevron-right"
+              .path=${mdiChevronRight}
+              title="Right"
+            ></ha-icon-button>
+          </div>
+           <div class="row">
+            <ha-icon-button
+              .action="${"down"}"
+              @click="${this.handleActionClick}"
+              icon="mdi:chevron-down"
+              .path=${mdiChevronDown}
+              title="Down"
+            ></ha-icon-button>
+          </div>
+          ${
+            this._config.reverse || this._config.play || this._config.forward
+              ? html`
+                  <div class="row">
+                    ${this._config.reverse
+                      ? html`
+                          <ha-icon-button
+                            .action="${"reverse"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:rewind"
+                            .path=${mdiRewind}
+                            title="Rewind"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.play
+                      ? html`
+                          <ha-icon-button
+                            .action="${"play"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:play-pause"
+                            .path=${mdiPlayPause}
+                            title="Play/Pause"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                    ${this._config.forward
+                      ? html`
+                          <ha-icon-button
+                            .action="${"forward"}"
+                            @click="${this.handleActionClick}"
+                            icon="mdi:fast-forward"
+                            .path=${mdiFastForward}
+                            title="Fast-Forward"
+                          ></ha-icon-button>
+                        `
+                      : emptyButton}
+                  </div>
+                `
+              : ""
+          }
           ${
             this._config.tv && (
             this._config.volume_up ||
