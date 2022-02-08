@@ -7,10 +7,8 @@ mdiPower,
 mdiPowerOn,
 mdiPowerOff,
 mdiArrowLeft,
-mdiVideoInputHdmi,
 mdiHome,
 mdiArrowUp,
-mdiTelevisionGuide,
 mdiArrowDown,
 mdiChevronUp,
 mdiChevronLeft,
@@ -126,7 +124,6 @@ class TVCardServices extends LitElement {
                 `
               : ""
           }
-          
           ${
             this._config.back || this._config.home || this._config.menu
               ? html`
@@ -147,7 +144,7 @@ class TVCardServices extends LitElement {
                           <ha-icon-button
                             .action="${"home"}"
                             @click="${this.handleActionClick}"
-                            icon="mdi:video-input-hdmi"
+                            icon="mdi:home"
                             .path=${mdiHome}
                             title="Home"
                           ></ha-icon-button>
@@ -202,7 +199,8 @@ class TVCardServices extends LitElement {
               title="Right"
             ></ha-icon-button>
           </div>
-           <div class="row">
+
+          <div class="row">
             <ha-icon-button
               .action="${"down"}"
               @click="${this.handleActionClick}"
@@ -211,7 +209,6 @@ class TVCardServices extends LitElement {
               title="Down"
             ></ha-icon-button>
           </div>
-
           ${
             this._config.reverse || this._config.play || this._config.forward
               ? html`
@@ -243,7 +240,7 @@ class TVCardServices extends LitElement {
                           <ha-icon-button
                             .action="${"forward"}"
                             @click="${this.handleActionClick}"
-                            icon="mdi:fast-forward"
+                            icon="mdi:fas-forward"
                             .path=${mdiFastForward}
                             title="Fast-Forward"
                           ></ha-icon-button>
@@ -253,20 +250,49 @@ class TVCardServices extends LitElement {
                 `
               : ""
           }
+
           ${
-            this._config.finder ||
-            this._config.hulu ||
-            this._config.prime_video
+            this._config.volume_up || this._config.volume_down || this._config.volume_mute )
               ? html`
                   <div class="row">
-                    ${this._config.finder ?
+                    <ha-icon-button
+                      .action="${"volume_mute"}"
+                      @click="${this.handleActionClick}"
+                      icon="mdi:volume-mute"
+                      .path=${mdiVolumeMute}
+                      title="Volume Mute"
+                    ></ha-icon-button>
+                    <ha-icon-button
+                      .action="${"volume_down"}"
+                      @click="${this.handleActionClick}"
+                      icon="mdi:volume-minus"
+                      .path=${mdiVolumeMinus}
+                      title="Volume Down"
+                    ></ha-icon-button>
+                    <ha-icon-button
+                      .action="${"volume_up"}"
+                      @click="${this.handleActionClick}"
+                      icon="mdi:volume-plus"
+                      .path=${mdiVolumePlus}
+                      title="Volume Up"
+                    ></ha-icon-button>
+                  </div>
+                `
+              : ""
+          }
+		  
+          ${
+            this._config.youtube || this._config.hulu || this._config.prime_video
+              ? html`
+                  <div class="row">
+                    ${this._config.youtube ?
                       html`
                         <ha-icon-button
-                          .action="${"finder"}"
+                          .action="${"youtube"}"
                           @click="${this.handleActionClick}"
-                          icon="mdi:remote-tv"
-                          .path=${mdiRemotetv}
-                          title="Remote Finder"
+                          icon="mdi:youtube"
+                          .path=${mdiYoutube}
+                          title="Youtube"
                         ></ha-icon-button>
                       `
                     : emptyButton}
@@ -296,11 +322,10 @@ class TVCardServices extends LitElement {
                 `
               : ""
           }
-          
+
+
           ${
-            this._config.netflix ||
-            this._config.plex ||
-            this._config.youtube
+            this._config.netflix || this._config.plex || this._config.finder
               ? html`
                   <div class="row">
                     ${this._config.netflix
@@ -325,49 +350,17 @@ class TVCardServices extends LitElement {
                           ></ha-icon-button>
                         `
                       : emptyButton}
-                    ${this._config.youtube
+                    ${this._config.finder
                       ? html`
                           <ha-icon-button
-                            .action="${"youtube"}"
+                            .action="${"finder"}"
                             @click="${this.handleActionClick}"
-                            icon="mdi:youtube"
-                            .path=${mdiYoutube}
-                            title="YouTube"
+                            icon="mdi:remote"
+                            .path=${mdiRemote}
+                            title="Remote Finder"
                           ></ha-icon-button>
                         `
                       : emptyButton}
-                  </div>
-                `
-              : ""
-          }          
-          ${
-            this._config.tv && (
-            this._config.volume_up ||
-            this._config.volume_down ||
-            this._config.volume_mute )
-              ? html`
-                  <div class="row">
-                    <ha-icon-button
-                      .action="${"volume_mute"}"
-                      @click="${this.handleActionClick}"
-                      icon="mdi:volume-mute"
-                      .path=${mdiVolumeMute}
-                      title="Volume Mute"
-                    ></ha-icon-button>
-                    <ha-icon-button
-                      .action="${"volume_down"}"
-                      @click="${this.handleActionClick}"
-                      icon="mdi:volume-minus"
-                      .path=${mdiVolumeMinus}
-                      title="Volume Down"
-                    ></ha-icon-button>
-                    <ha-icon-button
-                      .action="${"volume_up"}"
-                      @click="${this.handleActionClick}"
-                      icon="mdi:volume-plus"
-                      .path=${mdiVolumePlus}
-                      title="Volume Up"
-                    ></ha-icon-button>
                   </div>
                 `
               : ""
@@ -403,7 +396,7 @@ class TVCardServices extends LitElement {
         }
         .row {
           display: flex;
-          padding: 8px 36px 8px 36px;
+          padding: 8px 18px 8px 18px;
           justify-content: space-evenly;
         }
         .diagonal {
@@ -429,8 +422,8 @@ class TVCardServices extends LitElement {
       "volume_down",
       "volume_mute",
       "back",
-      "source",
-      "info",
+      "menu",
+      "finder",
       "home",
       "channelup",
       "channeldown",
@@ -442,13 +435,11 @@ class TVCardServices extends LitElement {
       "reverse",
       "play",
       "forward",
+	  "plex",
+	  "hulu",
       "netflix",
       "prime_video",
-      "youtube",
-      "menu",
-      "finder",
-      "plex",
-      "hulu",
+      "youtube"
     ];
 
     if (
