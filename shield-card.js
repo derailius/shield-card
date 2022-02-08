@@ -399,7 +399,7 @@ class TVCardServices extends LitElement {
         }
         .row {
           display: flex;
-          padding: 8px 36px 8px 36px;
+          padding: 8px 16px 8px 16px;
           justify-content: space-evenly;
         }
         .diagonal {
