@@ -10,5 +10,5 @@ author:
   name: mar_robHD
 license: Apache License, Version 2.0
 files:
-  - shieldtv-card.js
-  - shieldtv-card-editor.js
+  - tv-card.js
+  - tv-card-editor.js
