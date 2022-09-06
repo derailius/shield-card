@@ -51,7 +51,12 @@ Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 
 ## Installation
 
-Install using HACS or [see this guide](https://github.com/thomasloven/hass-config/wiki/Lovelace-Plugins).
+Install using HACS: 3 dots in the top right > custom repository
+Repository: Gangoke/shield-card
+Category: lovelace 
+> Add
+
+or [see this guide](https://github.com/thomasloven/hass-config/wiki/
 
 ## Nvidia Shield Commands
 Here you cna find some adb commands: [NVIDIA Shield Intents](https://gist.github.com/mcfrojd/9e6875e1db5c089b1e3ddeb7dba0f304)
