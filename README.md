@@ -51,10 +51,12 @@ Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 
 ## Installation
 
-Install using HACS: 3 dots in the top right > custom repository
+Install using HACS: 
+3 dots in the top right
+Custom repository
 Repository: Gangoke/shield-card
 Category: lovelace 
-> Add
+Add
 
 or [see this guide](https://github.com/thomasloven/hass-config/wiki/
 
