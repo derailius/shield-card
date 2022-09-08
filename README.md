@@ -36,7 +36,7 @@ Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 | volume_up | `service` | **Optional**| service to call when volume up button pressed
 | volume_down | `service` | **Optional**| service to call when volume down button pressed
 | volume_mute | `service` | **Optional**| service to call when volume mute button pressed
-| netflix | `service` | **Optional**| service to call when netflix button pressed
+| recycle | `service` | **Optional**| service to call when recycle button pressed
 | prime_video | `service` | **Optional**| service to call when prime video button pressed
 | youtube | `service` | **Optional**| service to call when youtube button pressed
 | kodi | `service` | **Optional**| service to call when kodi button pressed
@@ -152,11 +152,11 @@ prime_video:
     command: >-
       am start -a android.intent.action.VIEW -n
       com.amazon.amazonvideo.livingroom/com.amazon.ignition.IgnitionActivity
-netflix:
+recycle:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.living_room_nvidia_shield
-    command: am start -a android.intent.action.VIEW -n com.netflix.ninja/.MainActivity
+    entity_id: media_player.android_tv_192_168_0_106
+    command: adb shell reboot
 plex:
   service: androidtv.adb_command
   service_data:
