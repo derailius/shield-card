@@ -92,11 +92,11 @@ prime_video:
     command: >-
       am start -a android.intent.action.VIEW -n
       com.amazon.amazonvideo.livingroom/com.amazon.ignition.IgnitionActivity
-netflix:
+recycle:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.living_room_nvidia_shield
-    command: am start -a android.intent.action.VIEW -n com.netflix.ninja/.MainActivity
+    entity_id: media_player.android_tv_192_168_0_106
+    command: adb shell reboot
 plex:
   service: androidtv.adb_command
   service_data:
