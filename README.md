@@ -1,4 +1,4 @@
-# Nvidia Shield Remote Card
+# Nvidia Shield Remote Card w/ Kodi
 
 Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 
