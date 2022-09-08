@@ -6,7 +6,7 @@ Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 ## Demo: 
 *yaml found below*
 
-![demo](https://i.imgur.com/dcR9U2S.png)
+![demo](https://puu.sh/JkecB/a29e82f10a.png)
 
 ## Options
 
