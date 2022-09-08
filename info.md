@@ -95,7 +95,7 @@ prime_video:
 recycle:
   service: androidtv.adb_command
   service_data:
-    entity_id: media_player.android_tv_192_168_0_106
+    entity_id: media_player.living_room_nvidia_shield
     command: adb shell reboot
 plex:
   service: androidtv.adb_command
