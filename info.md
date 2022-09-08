@@ -79,13 +79,12 @@ finder:
     command: >-
       am start -a android.intent.action.VIEW -d -n
       com.nvidia.remotelocator/.ShieldRemoteLocatorActivity
-hulu:
+kodi:
   service: androidtv.adb_command
   service_data:
     entity_id: media_player.living_room_nvidia_shield
     command: >-
-      am start -a android.intent.action.VIEW -n
-      com.hulu.livingroomplus/.WKFactivity
+      am start -a android.intent.action.VIEW -n org.xbmc.kodi/.Splash
 prime_video:
   service: androidtv.adb_command
   service_data:
