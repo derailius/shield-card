@@ -39,7 +39,7 @@ Forked from [marrobHD/tv-card](https://github.com/marrobHD/tv-card)
 | netflix | `service` | **Optional**| service to call when netflix button pressed
 | prime_video | `service` | **Optional**| service to call when prime video button pressed
 | youtube | `service` | **Optional**| service to call when youtube button pressed
-| hulu | `service` | **Optional**| service to call when hulu button pressed
+| kodi | `service` | **Optional**| service to call when kodi button pressed
 | plex | `service` | **Optional**| service to call when plex button pressed
 
 ## `service` Options
@@ -139,13 +139,12 @@ finder:
     command: >-
       am start -a android.intent.action.VIEW -d -n
       com.nvidia.remotelocator/.ShieldRemoteLocatorActivity
-hulu:
+kodi:
   service: androidtv.adb_command
   service_data:
     entity_id: media_player.living_room_nvidia_shield
     command: >-
-      am start -a android.intent.action.VIEW -n
-      com.hulu.livingroomplus/.WKFactivity
+      am start -a android.intent.action.VIEW -n org.xbmc.kodi/.Splash
 prime_video:
   service: androidtv.adb_command
   service_data:
