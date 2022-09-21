@@ -304,7 +304,7 @@ class TVCardServices extends LitElement {
                             .action="${"restart"}"
                             @click="${this.handleActionClick}"
                             icon="mdi:restart"
-                            .path=${mdimdiRestart}
+                            .path=${mdiRestart}
                             title="mdiRestart"
                           ></ha-icon-button>
                         `
