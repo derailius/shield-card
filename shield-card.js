@@ -23,7 +23,7 @@ mdiFastForward,
 mdiVolumeMute,
 mdiVolumeMinus,
 mdiVolumePlus,
-mdiRecycle,
+mdiRestart,
 mdiYoutube,
 mdiMenu,
 mdiRemote,
@@ -293,19 +293,19 @@ class TVCardServices extends LitElement {
           }
           
           ${
-            this._config.recycle ||
+            this._config.restart ||
             this._config.plex ||
             this._config.finder
               ? html`
                   <div class="row">
-                    ${this._config.recycle
+                    ${this._config.restart
                       ? html`
                           <ha-icon-button
-                            .action="${"recycle"}"
+                            .action="${"restart"}"
                             @click="${this.handleActionClick}"
-                            icon="mdi:recycle"
-                            .path=${mdiRecycle}
-                            title="Recycle"
+                            icon="mdi:restart"
+                            .path=${mdimdiRestart}
+                            title="mdiRestart"
                           ></ha-icon-button>
                         `
                       : emptyButton}
