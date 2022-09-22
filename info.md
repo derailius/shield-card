@@ -1,6 +1,6 @@
 **Sample overview:**
 
-![demo](https://puu.sh/JkeQh/44ec7c1f08.png)
+![demo](https://puu.sh/Jmvix/006d80d0bd.png)
 
 
 ### Example 1:
@@ -92,7 +92,7 @@ prime_video:
     command: >-
       am start -a android.intent.action.VIEW -n
       com.amazon.amazonvideo.livingroom/com.amazon.ignition.IgnitionActivity
-recycle:
+restart:
   service: androidtv.adb_command
   service_data:
     entity_id: media_player.living_room_nvidia_shield
